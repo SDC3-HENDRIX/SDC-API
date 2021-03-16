@@ -16,7 +16,13 @@
     "url": "https://github.com/SDC3-HENDRIX/SDC-API/issues"
   },
   "homepage": "https://github.com/SDC3-HENDRIX/SDC-API#readme",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jest-extended": "^0.11.5",
+    "morgan": "^1.10.0"
+  },
   "devDependencies": {
     "eslint": "^7.22.0",
     "eslint-config-airbnb": "^18.2.1",
