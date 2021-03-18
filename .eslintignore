@@ -2,3 +2,5 @@
 jest.config.js
 *.sql
 .env*
+*.csv
+*.xml
