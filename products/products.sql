@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS features (
 );
 
 CREATE TABLE IF NOT EXISTS styles (
-  style_id INT  AUTO_INCREMENT PRIMARY KEY,
+  style_id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(128),
   original_price INT,
   sale_price INT,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS skus (
 );
 
 CREATE TABLE IF NOT EXISTS photos (
-  photo_id INT  AUTO_INCREMENT PRIMARY KEY,
+  photo_id INT AUTO_INCREMENT PRIMARY KEY,
   thumbnail_url TEXT,
   url TEXT,
   style_id INT,
