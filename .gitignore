@@ -2,7 +2,9 @@
 logs
 *.log
 npm-debug.log*
-
+#
+#q&acsvFiles
+questionsAndAnswers/csvFiles
 #Package lock json
 package-lock.json
 
