@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": "airbnb-base",
   "plugins": ["jest"],
   "rules": {
     "jest/no-focused-tests": "error",
@@ -9,9 +9,5 @@
   },
   "env": {
     "jest/globals": true
-  },
-  "engines": {
-    "node": "^14.15.1"
   }
-
 }
