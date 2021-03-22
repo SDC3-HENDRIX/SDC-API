@@ -5,15 +5,14 @@ const { redisSet, redisGet } = require('./config/redis');
 
 const router = express.Router();
 
+// destination for products node instance
 const destination = 'http://localhost:3010';
-// by default just forward everything
-// router.use(createProxyMiddleware(productsEndpoint));
 
 router.get('/products', (req, res) => {
   const page = req.query.page || 1;
   const count = req.query.count || 5;
   const key = `page:${page}:count:${count}`;
-
+  // this is a promise
   return redisGet(key).then((result) => {
     if (result) {
       res.status(200).send(JSON.parse(result));
@@ -28,7 +27,6 @@ router.get('/products', (req, res) => {
   });
 });
 
-// get products from the endpoint
 // get one product from the endpoint
 router.get('/products/:product_id', (req, res) => {
   const productId = req.params.product_id;
