@@ -7,6 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(morgan('combined', { stream: logger.stream }));
+
 // proxy routes
 app.use(products);
 
