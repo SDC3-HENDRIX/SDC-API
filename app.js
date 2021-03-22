@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 app.use(morgan('combined', { stream: logger.stream }));
 // proxy routes
-app.use('/products', products);
+app.use(products);
 
 app.listen(port);
 
