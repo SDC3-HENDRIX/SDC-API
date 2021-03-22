@@ -27,7 +27,7 @@ const logger = createLogger({
     prettyPrint(),
     json(),
   ),
-  defaultMeta: { service: 'sdc-products' },
+  defaultMeta: { service: 'sdc-api' },
   transports: [
     new transports.File({ filename: logPath }),
     new transports.File({
