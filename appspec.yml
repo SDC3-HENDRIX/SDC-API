@@ -22,7 +22,5 @@ hooks:
   BeforeInstall:
     - location: scripts/node_setup.sh
       runas: ubuntu
-    - location: scripts/codedeploy_setup.sh
-      runas: ubuntu
     - location: scripts/redis_setup.bash
       runas: ubuntu
