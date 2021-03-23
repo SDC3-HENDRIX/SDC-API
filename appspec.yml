@@ -1,0 +1,10 @@
+version: 0.1
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/sdc-api
+hooks:
+  BeforeInstall:
+    - location: scripts/node_setup.bash
+    - location: scripts/codedeploy_setup.bash
+    - location: scripts/redis_setup.bash
