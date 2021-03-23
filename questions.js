@@ -1,16 +1,17 @@
-const router = require('express').Router;
+const express = require('express');
 const axios = require('axios');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const logger = require('./config/winston');
 const { redisSet, redisGet } = require('./config/redis');
 
+const router = express.Router();
 const destination = 'http://localhost:3020';
 const options = {
   target: destination,
   changeOrigin: true,
 };
 
-router.get('/qa/questions', (req, res) => {
+router.get('/questions', (req, res) => {
   const { page = 1, count = 5, productId } = req.query;
   const key = `productId:${productId}:page${page}:count${count}`;
 
@@ -29,7 +30,7 @@ router.get('/qa/questions', (req, res) => {
   });
 });
 
-router.get('/qa/questions/:question_id/answers', (req, res) => {
+router.get('/questions/:question_id/answers', (req, res) => {
   const questionId = req.params.question_id;
   const key = `question:${questionId}`;
   return redisGet(key).then((results) => {
@@ -48,8 +49,8 @@ router.get('/qa/questions/:question_id/answers', (req, res) => {
   });
 });
 
-router.post('/qa/questions*', createProxyMiddleware(options));
-router.put('/qa/questions*', createProxyMiddleware(options));
-router.put('/qa/answers*', createProxyMiddleware(options));
+router.post('/questions*', createProxyMiddleware(options));
+router.put('/questions*', createProxyMiddleware(options));
+router.put('/answers*', createProxyMiddleware(options));
 
 module.exports = router;
