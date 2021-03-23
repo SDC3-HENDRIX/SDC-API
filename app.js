@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const products = require('./products');
+const questions = require('./questions');
+const reviews = require('./reviews');
 const logger = require('./config/winston');
 
 const app = express();
@@ -9,7 +11,9 @@ const port = process.env.PORT || 3000;
 app.use(morgan('combined', { stream: logger.stream }));
 
 // proxy routes
-app.use(products);
+app.use('/products', products);
+app.use('/qa', questions);
+app.use('/reviews', reviews);
 
 app.listen(port);
 
