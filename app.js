@@ -14,6 +14,6 @@ app.use(products);
 app.listen(port);
 
 // API key for loader.io
-app.get('/loaderio-1d381886955d5f81d33795ea3f08b9d8', (req, res) => {
-  res.send('loaderio-1d381886955d5f81d33795ea3f08b9d8');
+app.get('/loaderio-cc6341b7f5678d3e2579c9a1e733a07e', (req, res) => {
+  res.send('loaderio-cc6341b7f5678d3e2579c9a1e733a07e');
 });
