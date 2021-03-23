@@ -9,6 +9,15 @@ permissions:
     owner: ubuntu
     group: ubuntu
     mode: 644
+    type:
+      - file
+  - object: /home/ubuntu/sdc-api
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
+    type:
+      - directory
 hooks:
   BeforeInstall:
     - location: scripts/node_setup.sh
