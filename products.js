@@ -8,8 +8,16 @@ const router = express.Router();
 const destination = 'http://localhost:3010';
 
 router.get('/', (req, res) => {
-  const page = req.query.page || 1;
-  const count = req.query.count || 5;
+  let { page, count, test } = req.query;
+
+  if (test === 'true') {
+    page = Math.floor(Math.random() * 1000);
+    count = Math.floor(Math.random() * 1000);
+  } else {
+    page = Number(req.query.page) || 1;
+    count = Number(req.query.count) || 5;
+  }
+
   const key = `page:${page}:count:${count}`;
   // this is a promise
   return redisGet(key).then((result) => {
@@ -31,7 +39,14 @@ router.get('/', (req, res) => {
 
 // get one product from the endpoint
 router.get('/:product_id', (req, res) => {
-  const productId = req.params.product_id;
+  let productId;
+
+  if (req.query.test === 'true') {
+    productId = Math.floor(Math.random() * 100002) + 900009;
+  } else {
+    productId = req.params.product_id;
+  }
+
   const key = `product:${productId}`;
   return redisGet(key).then((result) => {
     if (result !== null) {
@@ -51,7 +66,14 @@ router.get('/:product_id', (req, res) => {
 });
 
 router.get('/:product_id/styles', (req, res) => {
-  const productId = req.params.product_id;
+  let productId;
+
+  if (req.query.test === 'true') {
+    productId = Math.floor(Math.random() * 100002) + 900009;
+  } else {
+    productId = req.params.product_id;
+  }
+
   const key = `product:${productId}:styles`;
 
   return redisGet(key).then((result) => {
