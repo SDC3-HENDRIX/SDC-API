@@ -11,6 +11,7 @@ const options = {
   changeOrigin: true,
 };
 
+// /qa/questions
 router.get('/questions', (req, res) => {
   const { page = 1, count = 5, productId } = req.query;
   const key = `productId:${productId}:page${page}:count${count}`;
@@ -30,6 +31,7 @@ router.get('/questions', (req, res) => {
   });
 });
 
+// /qa/questions/:question_id
 router.get('/questions/:question_id/answers', (req, res) => {
   const questionId = req.params.question_id;
   const key = `question:${questionId}`;
