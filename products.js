@@ -5,7 +5,7 @@ const { redisSet, redisGet } = require('./config/redis');
 
 const router = express.Router();
 // destination for products node instance
-const destination = process.env.NODE_ENV === 'production' ? 'https://ec2-3-220-51-165.compute-1.amazonaws.com:3010' : 'http://localhost:3010';
+const destination = process.env.NODE_ENV === 'production' ? 'http://ip-172-31-84-78.ec2.internal:3010' : 'http://localhost:3010';
 
 router.get('/', (req, res) => {
   let { page, count, test } = req.query;
