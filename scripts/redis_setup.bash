@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/bin/bash
 
 sudo add-apt-repository ppa:redislabs/redis -y
 sudo apt update -y
