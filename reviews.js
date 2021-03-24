@@ -5,7 +5,7 @@ const logger = require('./config/winston');
 const { redisSet, redisGet } = require('./config/redis');
 
 const router = express.Router();
-const destination = 'http://localhost:3030';
+const destination = 'http://host.docker.internal:3030';
 const options = {
   target: destination,
   changeOrigin: true,
@@ -13,9 +13,9 @@ const options = {
 
 router.get('/', (req, res) => {
   const {
-    page = 1, count = 5, sort, product_id,
+    page = 1, count = 5, sort, productId = req.query.product_id,
   } = req.query;
-  const key = `product:${product_id}:page:${page}:count:${count}:sort:${sort}`;
+  const key = `product:${productId}:page:${page}:count:${count}:sort:${sort}`;
 
   return redisGet(key).then((results) => {
     if (results) return res.send(JSON.parse(results));
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
         page,
         count,
         sort,
-        product_id,
+        product_id: productId,
       },
     })
       .then(({ data }) => {
@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
       })
       .catch((err) => {
         logger.error(err);
-        res.status(500).send(`There was an error getting reviews for product ${product_id}`);
+        res.status(500).send(`There was an error getting reviews for product ${productId}`);
       });
   });
 });

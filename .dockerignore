@@ -1,0 +1,12 @@
+logs
+*.logs
+designs
+scripts
+*.test.*
+appspec.yml
+*.rdb
+*.sql
+data
+node_modules
+.env*
+*.env

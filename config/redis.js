@@ -2,7 +2,7 @@ const { promisify } = require('util');
 const redis = require('redis');
 
 const client = redis.createClient({
-  host: '127.0.0.1',
+  host: 'host.docker.internal',
 });
 
 // export these as promises
