@@ -1,0 +1,14 @@
+logs
+*.logs
+designs
+scripts
+*.test.*
+appspec.yml
+docker-compose*
+*.rdb
+*.sql
+data
+node_modules
+.env*
+*.env
+jest*

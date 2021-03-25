@@ -4,3 +4,6 @@ jest.config.js
 .env*
 *.csv
 *.xml
+redis
+*.conf
+

@@ -4,8 +4,10 @@
   "description": "This project adds backend services to an existing front end project.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "jest --passWithNoTests --coverage"
+    "start": "node app.js",
+    "test": "jest --passWithNoTests --coverage",
+    "debug": "nodemon app.js",
+    "lint":  "eslint --ext .js,.jsx ."
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.6",
