@@ -1,4 +1,4 @@
-FROM node:lts-buster
+FROM node:lts-alpine
 
 # App Dir
 WORKDIR /usr/src/app
@@ -6,13 +6,9 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN chown -R node:node /usr/src/app
-RUN npm install
-ENV NODE_ENV=development
-ENV PORT=3000
+RUN npm install --production
 
 COPY . .
-
-EXPOSE 3000
 
 CMD [ "node", "app.js" ]
 USER node
