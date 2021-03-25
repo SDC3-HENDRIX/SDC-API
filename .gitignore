@@ -3,7 +3,9 @@ logs
 *.log
 npm-debug.log*
 
-# Compose
+# Docker
+!docker-compose.dev.example
+!docker-compose.yml
 docker-compose*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
@@ -46,6 +48,7 @@ node_modules/
 *.tgz
 
 # dotenv environment variables file
+!example.env
 .env
 .env.test
 
