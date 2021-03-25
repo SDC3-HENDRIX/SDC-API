@@ -1,10 +1,12 @@
 const { promisify } = require('util');
 const redis = require('redis');
 
-const hostname = process.env.REDIS_HOST;
+const host = process.env.REDIS_HOST;
+const password = process.env.REDIS_PASS;
 
 const client = redis.createClient({
-  host: hostname,
+  host,
+  password,
 });
 
 // export these as promises
