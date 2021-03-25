@@ -5,15 +5,15 @@ const { redisSet, redisGet } = require('./config/redis');
 
 const router = express.Router();
 // destination for products node instance
-const destination = process.env.NODE_ENV === 'production' ? 'http://ip-172-31-84-78.ec2.internal:3010' : 'http://host.docker.internal:3010';
+const destination = process.env.PRODUCTS_HOST || 'http://localhost:3010';
 
 router.get('/', (req, res) => {
   let { page, count } = req.query;
   const { test } = req.query;
 
   if (test === 'true') {
-    page = Math.floor(Math.random() * 1000);
-    count = Math.floor(Math.random() * 1000);
+    page = Math.floor(Math.random() * 10000) + 900000;
+    count = Math.floor(Math.random() * 10);
   } else {
     page = Number(req.query.page) || 1;
     count = Number(req.query.count) || 5;

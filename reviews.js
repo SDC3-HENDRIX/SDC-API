@@ -5,7 +5,7 @@ const logger = require('./config/winston');
 const { redisSet, redisGet } = require('./config/redis');
 
 const router = express.Router();
-const destination = 'http://host.docker.internal:3030';
+const destination = process.env.REVIEWS_HOST || 'http://localhost:3030';
 const options = {
   target: destination,
   changeOrigin: true,
