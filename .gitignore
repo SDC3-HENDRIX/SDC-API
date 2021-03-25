@@ -5,7 +5,7 @@ npm-debug.log*
 
 # Docker
 !docker-compose.dev.example
-!docker-compose.yml
+!docker-compose.example
 docker-compose*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
