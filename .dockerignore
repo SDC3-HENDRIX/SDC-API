@@ -4,6 +4,7 @@ designs
 scripts
 *.test.*
 appspec.yml
+docker-compose*
 *.rdb
 *.sql
 data
