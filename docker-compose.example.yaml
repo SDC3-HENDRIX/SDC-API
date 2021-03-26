@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  proxy:
+    depends_on:
+      - redis
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - REDIS_PASS=password
+      - PRODUCTS_HOST=http://fullyqualifiedurl
+      - PORT=3000
+    image: kodjoz/sdc-api:latest
+    networks:
+      - proxy
+    ports:
+    - "3000:3000"
+    command: npm start
+  redis:
+    build:
+      context: ./redis/
+      dockerfile: Dockerfile_redis
+    networks:
+      - proxy
+    expose:
+      - "6379"
+  products:
+    environment:
+      - NODE_ENV=production
+      - DBUSER=student
+      - DBPASS=password
+      - DB_ENDPOINT=someipaddress
+      - PORT=port
+      - DBNAME=databasename
+    image: kodjoz/sdc-products:latest
+    networks:
+      - proxy
+    expose:
+      - "3010"
+networks:
+  proxy:

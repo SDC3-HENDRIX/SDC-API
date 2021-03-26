@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  proxy:
+    depends_on:
+      - redis
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - PRODUCTS_HOST=http://host.docker.internal:3010
+      - QUESTIONS_HOST=http://localhost:3020
+      - REVIEWS_HOST=http://localhost:3030
+      - PORT=3000
+    image: kodjoz/sdc-api:latest
+    networks:
+      - proxy
+    ports:
+    - "3000:3000"
+    command: npm run debug
+  redis:
+    build:
+      context: ./redis/
+      dockerfile: Dockerfile_redis
+    networks:
+      - proxy
+    expose:
+      - "6379"
+networks:
+  proxy:
