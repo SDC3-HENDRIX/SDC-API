@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const logger = require('./config/winston');
-const { redisSet, redisGet } = require('./config/redis');
+const { redisSetEx, redisGet } = require('./config/redis');
 
 const router = express.Router();
 // destination for products node instance
@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
     return axios.get(`${destination}/products?page=${page}&count=${count}`)
       .then(({ data }) => {
         res.send(data);
-        return redisSet(key, JSON.stringify(data));
+        return redisSetEx(key, 600, JSON.stringify(data));
       })
       .catch((err) => {
         logger.error(err);
@@ -57,7 +57,7 @@ router.get('/:product_id', (req, res) => {
     return axios.get(`${destination}/products/${productId}`)
       .then(({ data }) => {
         res.status(200).send(data);
-        return redisSet(key, JSON.stringify(data));
+        return redisSetEx(key, 600, JSON.stringify(data));
       })
       .catch((err) => {
         res.status(500).send(`There was an error getting ${productId}`);
@@ -84,7 +84,7 @@ router.get('/:product_id/styles', (req, res) => {
     return axios.get(`${destination}/products/${productId}/styles`)
       .then(({ data }) => {
         res.status(200).send(data);
-        return redisSet(key, JSON.stringify(data));
+        return redisSet(key, 600, JSON.stringify(data));
       })
       .catch((err) => {
         res.status(500).send(`There was an error getting styles for ${productId}`);
@@ -104,7 +104,7 @@ router.get('/:product_id/related', (req, res) => {
     return axios.get(`${destination}/products/${productId}/related`)
       .then(({ data }) => {
         res.status(200).send(data);
-        return redisSet(key, JSON.stringify(data));
+        return redisSet(key, 600, JSON.stringify(data));
       })
       .catch((err) => {
         res.status(500).send(`There was an error getting related products for ${productId}`);
