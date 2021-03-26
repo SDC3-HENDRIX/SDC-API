@@ -4,8 +4,8 @@ logs
 npm-debug.log*
 
 # Docker
-!docker-compose.dev.example
-!docker-compose.example
+!docker-compose.dev.example.yaml
+!docker-compose.example.yaml
 docker-compose*
 
 
@@ -15,7 +15,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # Raw data
 *.csv
 data/
-
+*.tar
 # Runtime data
 pids
 *.pid
