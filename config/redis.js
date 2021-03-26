@@ -11,4 +11,5 @@ const client = redis.createClient({
 
 // export these as promises
 exports.redisSet = promisify(client.set).bind(client);
+exports.redisSetEx = promisify(client.setex).bind(client);
 exports.redisGet = promisify(client.get).bind(client);
